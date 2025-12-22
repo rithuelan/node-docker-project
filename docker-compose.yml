@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    container_name: node-docker-prod-app
+    ports:
+      - "3000:3000"
+    environment:
+      - REDIS_URL=redis://redis:6379/1
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7
+    container_name: node-docker-prod-redis
+    ports:
+      - "6379:6379"

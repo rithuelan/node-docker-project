@@ -1,0 +1,28 @@
+name: Node CI
+
+# Trigger workflow on push and pull requests
+on:
+  push:
+    branches: ["**"]           # Run on any branch
+  pull_request:
+    branches: ["**"]           # Run on any PR to any branch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest     # Use Ubuntu runner
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests with coverage
+        run: npm test
+
