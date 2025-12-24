@@ -1,15 +1,14 @@
 name: Node CI
 
-# Trigger workflow on push and pull requests
 on:
   push:
-    branches: ["**"]           # Run on any branch
+    branches: ["main"]
   pull_request:
-    branches: ["**"]           # Run on any PR to any branch
+    branches: ["main"]
 
 jobs:
   test:
-    runs-on: ubuntu-latest     # Use Ubuntu runner
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -25,4 +24,3 @@ jobs:
 
       - name: Run tests with coverage
         run: npm test
-
